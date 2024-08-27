@@ -163,6 +163,13 @@
   display: none;
 }
 
+.userImageIcon{
+  position: absolute;
+  bottom:0%;
+  padding-left: 1%;
+  padding-bottom: 1%;
+}
+
 @media (max-width: 991px ) and (min-width : 764px){
   .songsListMainDiv {
     padding: 1% !important;

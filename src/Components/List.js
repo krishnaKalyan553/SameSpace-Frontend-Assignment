@@ -3,6 +3,7 @@ import Logo from "../images/BrandLogo.png";
 import Search from "./Search";
 import SongDetails from "./SongDetails";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import UserProfile from "../images/Profile.png";
 
 function List({
   selectedTab,
@@ -27,17 +28,12 @@ function List({
   return (
     <div className="row g-0">
       <div className="col-lg-3 col-0">
-        <div className="d-flex w-100 align-items-start justify-content-between  flex-column">
+        <div className="d-none d-lg-flex postion-relative">
           {/* <div className="navHeight">
             <img className="logoHeight" src={Logo} alt="spotify" />
           </div> */}
-          <div>
-            {/* <div
-              className=""
-              style={{ backgroundColor: "yellow", borderRadius: "50%" }}
-            >
-              SN
-            </div> */}
+          <div className="userImageIcon">
+            <img src={UserProfile} alt="A" style={{height:"35px"}} />
           </div>
         </div>
       </div>
