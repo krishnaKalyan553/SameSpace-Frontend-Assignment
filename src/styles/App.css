@@ -1,0 +1,173 @@
+* {
+  font-family: inter;
+  color: white;
+}
+
+.mainDiv {
+  height: 100dvh;
+}
+
+.searchDiv {
+  opacity: 90%;
+  border-radius: 8px;
+  padding: 0.5% 1%;
+}
+
+.searchInput {
+  border: none;
+  overflow: hidden;
+  width: calc(100% - 19px);
+  border-radius: 8px;
+  outline: none;
+  background-color: transparent;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.songimageLogo {
+  border-radius: 10rem 10rem;
+  height: 48px;
+  width: 48px;
+}
+
+.songsListMainDiv {
+  padding: 0% 10% !important;
+}
+
+.songsList {
+  max-height: 80dvh;
+  overflow-y: scroll;
+}
+
+.songsList::-webkit-scrollbar {
+  display: none;
+}
+
+.playerDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* padding-right: ; */
+}
+
+.playerImageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.playerCoverImg {
+  width: 75%;
+  height: 60vh;
+  border-radius: 8px;
+}
+
+.songsListTabMenuFont{
+  opacity:70%;
+  font-weight : 700;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.songsListTabMenuFontActive{
+  opacity:100%;
+  font-weight : 700;
+  font-size: 24px;
+  line-height: 32px;
+} 
+.songDetails {
+  display: flex;
+  padding: 2% 1%;
+  /* justify-content: space-between; */
+  gap: 2%;
+  align-items: center;
+}
+
+.playerTextCont {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.duration {
+  justify-content: flex-end;
+  opacity: 80%;
+  margin-left: auto;
+}
+
+.songNameFont {
+  font-size: 18px;
+  font-weight: 500;
+}
+.songArtistFont {
+  font-size: 12px;
+  opacity: 70%;
+}
+
+.custom-audio-player {
+  display: flex;
+  justify-content: center;
+}
+
+.audioPlayer {
+  width: 80%;
+}
+
+.playerSongName {
+  font-size: 32px;
+  width: 75%;
+  line-height: 36px;
+}
+
+.playerArtistName {
+  font-size: 12px;
+  width: 75%;
+  opacity: 70%;
+}
+
+.logoHeight{
+  height: 32px;
+  width: auto;
+}
+
+.navHeight {
+  display: flex;
+  align-items: center;
+  padding: 2% 0%;
+}
+
+.rhap_progress-indicator {
+  display: none;
+}
+
+.rhap_progress-filled {
+  background-color: white !important;
+}
+
+.rhap_progress-container {
+  margin: 0% !important;
+}
+
+.rhap_download-progress {
+  display: none;
+}
+
+.rhap_volume-controls {
+  flex-grow: 0 !important;
+}
+
+.rhap_volume-indicator {
+  display: none;
+}
+
+@media (max-width: 991px ) and (min-width : 764px){
+
+  .songsListMainDiv {
+    padding: 1% !important;
+  }
+  
+
+}
