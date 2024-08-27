@@ -140,10 +140,10 @@ function App() {
             }}
           />
         </div>
-        <div>
+        <div className="py-1">
           <img src={Logo} alt="spotify"></img>
         </div>
-        <div style={{paddingRight:"2%"}}>
+        <div className="py-2" style={{paddingRight:"2%"}}>
           <img src={UserProfile} alt="A"></img>
         </div>
         
