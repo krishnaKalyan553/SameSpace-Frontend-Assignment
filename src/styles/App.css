@@ -171,7 +171,6 @@
 }
 
 @media (max-width : 764px){
-
   .playerSongName {
     font-size: 22px;
     line-height: 36px;
@@ -200,5 +199,9 @@
   .toggleBar{
     max-height: 60dvh;
     overflow-y: scroll;
+  }
+
+  .toggleBar::-webkit-scrollbar {
+    display: none;
   }
 }

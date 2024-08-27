@@ -52,9 +52,11 @@ function Player({ activeSong,handleNextPrevious }) {
       </div>
       <div className="playerImageContainer">
         <img
+          loading='lazy'
+          fetchPriority='high'
           className="playerCoverImg"
-          src={playerImg ? playerImg : activeSong.cover}
-          alt={activeSong.cover}
+          src={playerImg}
+          alt={activeSong.cover[0]}
         />
       </div>
       <div className="custom-audio-player">

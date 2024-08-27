@@ -2,9 +2,6 @@ import React from "react";
 import { IoIosSearch } from "react-icons/io";
 
 function Search({ defaultSongsList, songsList, setSongsList, activeSong }) {
-  // console.log("defaultSongsList ",defaultSongsList)
-  // console.log("songsList",songsList)
-  // console.log("setSongsList",setSongsList)
   const handleChange = (e) => {
     let value = e.target.value;
     if (value !== "") {

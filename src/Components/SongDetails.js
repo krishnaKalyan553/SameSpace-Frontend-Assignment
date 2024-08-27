@@ -23,7 +23,7 @@ function SongDetails({songdetails,setActiveSong}) {
   return (
     <div className='songDetails' onClick={()=>{setActiveSong(songdetails)}}>
     <div className='songLogo'>
-      <img className='songimageLogo' src ={logoImg ? logoImg : songdetails.cover} alt ={songdetails.name[0]} />
+      <img loading='lazy' className='songimageLogo' src ={logoImg} alt ={songdetails.name[0]} />
     </div>
     <div>
       <div className='songNameFont'>{songdetails.name}</div>
