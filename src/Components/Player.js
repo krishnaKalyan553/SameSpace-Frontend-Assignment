@@ -13,19 +13,19 @@ const MoreOptions = () => (
   </div>
 );
 
-const ProgressNext = () => (
-  <div className="pointer" onClick={() => {}}>
+const ProgressNext = ({handleNextPrevious,song}) => (
+  <div className="pointer" onClick={() => {handleNextPrevious(song,"next")}}>
     <TbPlayerTrackNextFilled />
   </div>
 );
 
-const ProgressPrev = () => (
-  <div className="pointer" onClick={() => {}}>
+const ProgressPrev = ({handleNextPrevious,song}) => (
+  <div className="pointer" onClick={() => {handleNextPrevious(song,"prev")}}>
     <TbPlayerTrackPrevFilled />
   </div>
 );
 
-function Player({ activeSong }) {
+function Player({ activeSong,handleNextPrevious }) {
   const [playerImg, setPlayerImg] = useState(null);
   useEffect(() => {
     fetch(`https://cms.samespace.com/assets/${activeSong.cover}`)
@@ -67,9 +67,9 @@ function Player({ activeSong }) {
             customProgressBarSection={["PROGRESS_BAR"]}
             customControlsSection={[
               <MoreOptions />,
-              <ProgressPrev />,
+              <ProgressPrev handleNextPrevious={handleNextPrevious} song={activeSong} />,
               "MAIN_CONTROLS",
-              <ProgressNext />,
+              <ProgressNext handleNextPrevious={handleNextPrevious} song={activeSong} />,
               "VOLUME_CONTROLS",
             ]}
             style={{

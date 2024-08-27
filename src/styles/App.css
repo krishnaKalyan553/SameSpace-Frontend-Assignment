@@ -164,10 +164,41 @@
 }
 
 @media (max-width: 991px ) and (min-width : 764px){
-
   .songsListMainDiv {
     padding: 1% !important;
   }
   
+}
 
+@media (max-width : 764px){
+
+  .playerSongName {
+    font-size: 22px;
+    line-height: 36px;
+    padding-top: 10%;
+  }
+  
+  .playerArtistName {
+    font-size: 12px;
+    opacity: 70%;
+  }
+  .playerImageContainer{
+    padding: 10% 0%;
+
+  }
+  .playerCoverImg{
+    height:50dvh 
+  }
+
+  .songsListTabMenuFont{
+    padding: 3% 2%;
+  }
+  .songsListTabMenuFontActive{
+    padding: 3% 2%;
+  }
+
+  .toggleBar{
+    max-height: 60dvh;
+    overflow-y: scroll;
+  }
 }

@@ -6,11 +6,14 @@ import { Spinner } from "react-bootstrap";
 import Logo from "../images/BrandLogo.png";
 import UserProfile from "../images/Profile.png";
 import { IoMenuSharp } from "react-icons/io5";
+
 function App() {
-  const [activeSong, setActiveSong] = useState(null);
-  const [songsList, setSongsList] = useState(null);
+  // const [songsList, setSongsList] = useState(null);
   const [selectedTab, setSelectedTab] = useState("for_you");
-  const [openSideBar,setOpenSideBar] = useState(false);
+  const [openSideBar, setOpenSideBar] = useState(false);
+  const [topTrackSongs, setTopTrackSongs] = useState([]);
+  const [forYouSongs, setSongsForYou] = useState([]);
+  const [activeSong, setActiveSong] = useState(null);
   useEffect(() => {
     fetch("https://cms.samespace.com/items/songs")
       .then((response) => {
@@ -20,7 +23,23 @@ function App() {
         return response.json();
       })
       .then((res) => {
-        setSongsList(res.data);
+        const songsTopTrack = [];
+        let i = 0;
+        const songsForYou = [];
+        let j = 0;
+        res.data.forEach((song) => {
+          if (song.top_track === true) {
+            songsTopTrack.push({ ...song, song_index: i });
+            i += 1;
+          } else {
+            songsForYou.push({ ...song, song_index: j });
+            j += 1;
+          }
+        });
+        setTopTrackSongs(songsTopTrack);
+        setSongsForYou(songsForYou);
+        setActiveSong(songsForYou[0]);
+        // setSongIndex =
       })
       .catch((err) => {
         console.error("Error fetching songs:", err);
@@ -37,6 +56,27 @@ function App() {
       B < 255 ? B : 255
     })`;
   }
+
+  const handleNextPrevious = (song, move) => {
+    let currentTab;
+    if (song.top_track == true && selectedTab != "top_track") {
+      setSelectedTab("top_track");
+      currentTab = topTrackSongs;
+    } else if (song.top_track != true && selectedTab == "top_track") {
+      setSelectedTab("for_you");
+      currentTab = forYouSongs;
+    } else {
+      currentTab = song.top_track === true ? topTrackSongs : forYouSongs;
+    }
+    if (move === "next") {
+      let song_index = (song?.song_index + 1) % currentTab.length;
+      setActiveSong(currentTab[song_index]);
+    } else {
+      let song_index =
+        (song?.song_index - 1 + currentTab.length) % currentTab.length;
+      setActiveSong(currentTab[song_index]);
+    }
+  };
 
   return (
     <div
@@ -74,10 +114,10 @@ function App() {
               </div>
               <div
                 onClick={() => {
-                  setSelectedTab("top_tracks");
+                  setSelectedTab("top_track");
                 }}
                 className={`${
-                  selectedTab == "top_tracks"
+                  selectedTab == "top_track"
                     ? "songsListTabMenuFontActive"
                     : "songsListTabMenuFont"
                 }`}
@@ -93,32 +133,45 @@ function App() {
 
       <div className="d-lg-none d-flex align-items-center justify-content-between">
         <div className="d-md-none d-block">
-        <IoMenuSharp className="logoHeight" onClick={()=>{}}  />
+          <IoMenuSharp
+            className="logoHeight"
+            onClick={() => {
+              setOpenSideBar(true);
+            }}
+          />
         </div>
         <div>
-            <img src={Logo} alt="spotify"></img>
+          <img src={Logo} alt="spotify"></img>
         </div>
-        <div>
-            <img src={UserProfile} alt="A"></img>
+        <div style={{paddingRight:"2%"}}>
+          <img src={UserProfile} alt="A"></img>
         </div>
+        
       </div>
 
       <div className="row g-0">
-        <div className="col-lg-6 col-md-3">
-          {songsList && (<>
-            <div className="d-lg-block d-md-block d-none">
-              <ListOfSongs
-                selectedTab={selectedTab}
-                songsList={songsList}
-                activeSong={activeSong}
-                setActiveSong={setActiveSong}
-              />
-            </div>
-            </>
-          )}
+        <div className="col-lg-6 col-md-5">
+          <div className="d-lg-block d-md-block">
+            <ListOfSongs
+              selectedTab={selectedTab}
+              topTrackSongs={topTrackSongs}
+              forYouSongs={forYouSongs}
+              activeSong={activeSong}
+              setActiveSong={setActiveSong}
+              setSelectedTab={setSelectedTab}
+              openSideBar = {openSideBar}  
+              setOpenSideBar = {setOpenSideBar}
+              lightenColor ={lightenColor}
+            />
+          </div>
         </div>
-        <div className="col-lg-6 col-sm-12 col-md-9">
-          {activeSong && <Player activeSong={activeSong} />}
+        <div className="col-lg-6 col-sm-12 col-md-7">
+          {activeSong && (
+            <Player
+              activeSong={activeSong}
+              handleNextPrevious={handleNextPrevious}
+            />
+          )}
         </div>
       </div>
     </div>
