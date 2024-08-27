@@ -4,7 +4,7 @@
 }
 
 .mainDiv {
-  height: 100dvh;
+  min-height: 100dvh;
 }
 
 .searchDiv {
@@ -167,7 +167,6 @@
   .songsListMainDiv {
     padding: 1% !important;
   }
-  
 }
 
 @media (max-width : 764px){
@@ -182,7 +181,7 @@
     opacity: 70%;
   }
   .playerImageContainer{
-    padding: 10% 0%;
+    padding: 2% 0%;
 
   }
   .playerCoverImg{
