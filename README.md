@@ -1,5 +1,5 @@
 
-# Responsive Spotify Clone
+# Responsive Music Player
 
 ## Demo 🚀
 
